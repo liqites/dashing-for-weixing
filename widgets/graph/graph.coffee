@@ -39,6 +39,6 @@ class Dashing.Graph extends Dashing.Widget
     @graph.render()
 
   onData: (data) ->
-    if @graph
-      @graph.series[0].data = data.points
-      @graph.render()
+#    if @graph
+#      @graph.series[0].data = data.points
+#      @graph.render()
