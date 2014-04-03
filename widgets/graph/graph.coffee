@@ -5,12 +5,9 @@ class Dashing.Graph extends Dashing.Widget
   @accessor 'dateRange',->
     date=@get('date')
     if date then date[0]+" ~ "+date[date.length-1]
-  @accessor 'current', ->
-#    return @get('displayedValue') if @get('displayedValue')
+  @accessor 'current', -> if @get('plan')
     plan = @get('plan')
     plan[plan.length-1]
-#    if points
-#      points[points.length - 1].y
 
   ready: ->
     container = $(@node).parent()
