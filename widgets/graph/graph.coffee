@@ -5,8 +5,8 @@ class Dashing.Graph extends Dashing.Widget
   @accessor 'dateRange',->
     date=@get('date')
     if date then date[0]+" ~ "+date[date.length-1]
-  @accessor 'current', -> if @get('plan')
-    plan = @get('plan')
+  @accessor 'current', -> if @get('output')
+    plan = @get('output')
     plan[plan.length-1]
 
   ready: ->
@@ -28,7 +28,7 @@ class Dashing.Graph extends Dashing.Widget
       ]
     )
     @graph.series[0].data=[]
-    plan = @get('plan')
+    plan = @get('output')
     date = @get('date')
     for scale in [0..29]
       @graph.series[0].data.push {x:scale,y:plan[scale]}

@@ -29,14 +29,19 @@ metalclose_plan_30f = Generator.generate_data(20,50.0,20.0)
 
 # 前一个月缺数、完工数、核定产能对比
 send_event('metalclose_capicity', {date:date_30b, plan:metalclose_aprovedplan, finished:metalclose_finished, unfinished:metalclose_unfinished })
+
 # 今日实际产量与前一个月（31个点）实际产量对比
 send_event('metalclose_output',{date:date_30b,output:metalclose_trueoutput})
+
 # 前7天与后15天的计划组成
 send_event('metalclose_plan',{date:date_7b15f,plan:(metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),finished:Generator.generate_new_array(22,7,metalclose_finished),unfinished:Generator.generate_array_minus((metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),Generator.generate_new_array(22,7,metalclose_finished))})
+
 # 前一个月的累计误期值
 send_event('metalclose_sum_unfinished',{value:Generator.generate_array_sum(metalclose_unfinished)})
+
 # 前一个月的存量值+后15天的计划值
 send_event('metalclose_sum_planunfinished',{value:(Generator.generate_array_sum(metalclose_plan_30b)+Generator.generate_array_sum(metalclose_plan_30f.first(15)))})
+
 # 前一个月的实际产量周日均与实际产量的对比
 
 
