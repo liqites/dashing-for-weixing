@@ -31,8 +31,7 @@ metalclose_plan_30f = Generator.generate_data(20,50.0,20.0)
 send_event('metalclose_capicity', {date:date_30b, plan:metalclose_aprovedplan, finished:metalclose_finished, unfinished:metalclose_unfinished })
 
 # 今日实际产量与前一个月（31个点）实际产量对比
-send_event('metalclose_output',{date:date_30b,output:metalclose_trueoutput})
-
+# send_event('metalclose_output',{date:date_30b,output:metalclose_trueoutput})
 # 前7天与后15天的计划组成
 send_event('metalclose_plan',{date:date_7b15f,plan:(metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),finished:Generator.generate_new_array(22,7,metalclose_finished),unfinished:Generator.generate_array_minus((metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),Generator.generate_new_array(22,7,metalclose_finished))})
 
@@ -71,7 +70,7 @@ metalopen_plan_30f = Generator.generate_data(20,40.0,10.0)
 # 前一个月缺数、完工数、核定产能对比
 send_event('metalopen_capicity', {date:date_30b, plan:metalopen_aprovedplan, finished:metalopen_finished, unfinished:metalopen_unfinished })
 # 今日实际产量与前一个月（31个点）实际产量对比
-send_event('metalopen_output',{date:date_30b,output:metalopen_trueoutput})
+# send_event('metalopen_output',{date:date_30b,output:metalopen_trueoutput})
 # 前7天与后15天的计划组成
 send_event('metalopen_plan',{date:date_7b15f,plan:(metalopen_plan_30b.last(7)<<metalopen_plan_30f.first(15)),finished:Generator.generate_new_array(22,7,metalopen_finished),unfinished:Generator.generate_array_minus((metalopen_plan_30b.last(7)<<metalopen_plan_30f.first(15)),Generator.generate_new_array(22,7,metalopen_finished))})
 # 前一个月的累计误期值
@@ -183,3 +182,43 @@ send_event('oeeteep_lst3oee',{a:prand.rand(33.0..35.0),b:prand.rand(36.0..39.0),
 
 # 各生产车间TEEP的后三名排行
 send_event('oeeteep_lst3teep',{a:prand.rand(31.0..33.0),b:prand.rand(34.7..45.8),c:prand.rand(36.5..40.0)})
+
+# Daily
+################
+#所有的daily
+################
+#@@ 金属闭口实际生产量
+mentalclose_trueoutput = 0
+#@@ 金属开口实际生产量
+mentalopen_trueoutput = 0
+#@@ 订单分数
+order_daily_num = 0
+#@@ 订单数量
+order_daily_sum = 0
+#@@ 当前采购金额
+order_buy = 0
+#@@ 当前收费金额
+order_fee = 0
+SCHEDULER.every '5s', :first_in => 0 do |job|
+  mentalclose_trueoutput = Generator.generate_single_value(mentalclose_trueoutput,10,2)
+  mentalopen_trueoutput = Generator.generate_single_value(mentalopen_trueoutput,8,2)
+  order_daily_num = Generator.generate_single_value(order_daily_num,2,1)
+  order_daily_sum = Generator.generate_single_value(order_daily_sum,40,10)
+  order_buy = Generator.generate_single_value(order_buy,200,20)
+  order_fee = Generator.generate_single_value(order_fee,200,20)
+  #
+
+  #
+  send_event('metalclose_output', {date:date_30b,output:metalclose_trueoutput, outpu_daily:mentalclose_trueoutput})
+  #
+  send_event('metalopen_output', {date:date_30b,output:metalopen_trueoutput, output_daily:mentalopen_trueoutput})
+  #
+  send_event('order_daily_num', {value:order_daily_num })
+  #
+  send_event('order_daily_sum', {value:order_daily_sum })
+  #
+  send_event('order_buy', {value:order_buy })
+  #
+  send_event('order_fee', {value:order_fee })
+  #
+end
