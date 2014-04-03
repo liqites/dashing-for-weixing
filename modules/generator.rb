@@ -22,7 +22,7 @@ module Generator
       approvecapcity[i] = prand.rand(aprovecapmin..aprovecapmax)
     end
     result = {}
-    result = {'date'=>dates,'truecapicity'=>truecapicity,'approvecapcity'=>approvecapcity,'miscapicity'=>miscapicity}
+    result = {'date'=>dates,'finishcapicity'=>truecapicity,'approvecapcity'=>approvecapcity,'miscapicity'=>miscapicity}
     #puts result
   end
 
