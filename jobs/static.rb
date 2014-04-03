@@ -1,29 +1,29 @@
 require_relative '../modules/generator'
 # :first_in sets how long it takes before the job is first run. In this case, it is run immediately
 #@@
-prand = Random.new(1234)
+prand = Random.new
 #@@ 前30天的日期
 date_30b = Generator.generate_date(20)
 #@@ 前7天和后15天的日期
 date_7b15f = Generator.generate_date(22,Time.now+15*24*3600)
 #@@ 后30天日期
-date_30f = Generator.generate_date(20,Time.now+30*24*3600)
+date_30f = Generator.generate_date(30,Time.now+30*24*3600)
 ###########
 # 金属闭口
 ###########
 #@@前30天核定产能
 metalclose_aprovedplan = Generator.generate_data(20,45,30)
 #@@前30天计划数
-metalclose_plan_30b = Generator.generate_data(20,50.0,20.0)
+metalclose_plan_30b = Generator.generate_data(20,50.0,40.0)
 #@@前30天完工数
-metalclose_finished = Generator.generate_data(20,49.0,10.0)
+metalclose_finished = Generator.generate_data(20,47.0,36.0)
 
 #@@前30天实际产量
-metalclose_trueoutput = Generator.generate_data(20,70.0,20.0)
+metalclose_trueoutput = Generator.generate_data(20,70.0,40.0)
 #@@前30天缺数 = 计划数 - 完工数
 metalclose_unfinished =Generator.generate_array_minus(metalclose_plan_30b,metalclose_finished)
 #@@后15天计划数
-metalclose_plan_30f = Generator.generate_data(20,50.0,20.0)
+metalclose_plan_30f = Generator.generate_data(15,50.0,20.0)
 #---------------------------
 #@@当日实际产量 //定时job
 #---------------------------
@@ -37,7 +37,7 @@ send_event('metalclose_capicity', {date:date_30b, plan:metalclose_aprovedplan, f
 send_event('metalclose_plan',{date:date_7b15f,plan:(metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),finished:Generator.generate_new_array(22,7,metalclose_finished),unfinished:Generator.generate_array_minus((metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),Generator.generate_new_array(22,7,metalclose_finished))})
 
 # 前一个月的累计误期值
-send_event('metalclose_sum_unfinished',{value:Generator.generate_array_sum(metalclose_unfinished).round(2)})
+send_event('metalclose_sum_unfinished',{value:Generator.generate_array_sum(metalclose_unfinished)})
 
 # 前一个月的存量值+后15天的计划值
 send_event('metalclose_sum_planunfinished',{value:(Generator.generate_array_sum(metalclose_plan_30b)+Generator.generate_array_sum(metalclose_plan_30f.first(15)))})
@@ -54,15 +54,15 @@ send_event('mentalclose_plan_30f',{date:date_30f,points:metalclose_plan_30f})
 #@@前30天核定产能
 metalopen_aprovedplan = Generator.generate_data(20,35,20)
 #@@前30天计划数
-metalopen_plan_30b = Generator.generate_data(20,40.0,10.0)
+metalopen_plan_30b = Generator.generate_data(20,40.0,30.0)
 #@@前30天完工数
-metalopen_finished = Generator.generate_data(20,39.0,10.0)
+metalopen_finished = Generator.generate_data(20,36.0,28.0)
 #@@前30天实际产量
-metalopen_trueoutput = Generator.generate_data(20,50.0,10.0)
+metalopen_trueoutput = Generator.generate_data(20,50.0,35.0)
 #@@前30天缺数 = 计划数 - 完工数
 metalopen_unfinished =Generator.generate_array_minus(metalopen_plan_30b,metalopen_finished)
 #@@后15天计划数
-metalopen_plan_30f = Generator.generate_data(20,40.0,10.0)
+metalopen_plan_30f = Generator.generate_data(15,40.0,10.0)
 #---------------------------
 #@@当日实际产量 //定时job
 #---------------------------
@@ -200,7 +200,7 @@ order_buy = 0
 #@@ 当前收费金额
 order_fee = 0
 SCHEDULER.every '5s', :first_in => 0 do |job|
-  pust "push data"
+  puts "push data"
   mentalclose_trueoutput = Generator.generate_single_value(mentalclose_trueoutput,10,2)
   mentalopen_trueoutput = Generator.generate_single_value(mentalopen_trueoutput,8,2)
   order_daily_num = Generator.generate_single_value(order_daily_num,2,1)

@@ -19,7 +19,7 @@ module Generator
   #===========================
   def self.generate_data interval,max,min
     data = []
-    prand = Random.new(1234)
+    prand = Random.new
     for i in 0..(interval.to_i-1)
       data[i] = prand.rand(min..max).round(2)
     end
@@ -43,7 +43,7 @@ module Generator
   #===========================
   def self.generate_trcky_data(oriarray,interval)
     data = []
-    prand = Random.new(1234)
+    prand = Random.new
     for i in 0..(oriarray.length-1)
       if i < interval
         data[i] = oriarray[i]*prand.rand(0.6..0.95).round(2)
@@ -60,7 +60,7 @@ module Generator
   #===========================
   def self.generate_rate_data array,ratemax,ratemin
     data = []
-    prand = Random.new(1234)
+    prand = Random.new
     for i in 0..(array.count-1)
       data[i] = array[i]*prand.rand(ratemin..ratemax).round(2)
     end
@@ -71,7 +71,7 @@ module Generator
   #generate array sum
   #===========================
   def self.generate_array_sum array
-    array.inject{|sum,x| sum + x}
+    (array.inject{|sum,x| sum + x}).round(2)
   end
 
   #===========================
@@ -84,6 +84,9 @@ module Generator
       data = []
       for i in 0..oriarray.length-1
         data[i] = (oriarray[i]-targetarray[i]).round(2)
+        if data[i] < 0
+          data[i] = 0
+        end
       end
       data
     end
@@ -130,7 +133,7 @@ module Generator
 
   #single value
   def self.generate_single_value orival,intervalmax,intervalmin
-    prand = Random.new(1234)
+    prand = Random.new
     orival = orival + prand.rand(intervalmin..intervalmax).round(2)
   end
 end

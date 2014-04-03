@@ -5,10 +5,10 @@ points = []
 end
 last_x = points.last[:x]
 
-SCHEDULER.every '24h' do
-  points.shift
-  last_x += 1
-  points << { x: last_x, y: rand(50) }
+#SCHEDULER.every '24h' do
+  #points.shift
+  #last_x += 1
+  #points << { x: last_x, y: rand(50) }
 
-  send_event('convergence', points: points)
-end
+  #send_event('convergence', points: points)
+#end
