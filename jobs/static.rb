@@ -209,7 +209,7 @@ SCHEDULER.every '5s', :first_in => 0 do |job|
   #
 
   #
-  send_event('metalclose_output', {date:date_30b,output:metalclose_trueoutput, outpu_daily:mentalclose_trueoutput})
+  send_event('metalclose_output', {date:date_30b,output:metalclose_trueoutput, output_daily:mentalclose_trueoutput})
   #
   send_event('metalopen_output', {date:date_30b,output:metalopen_trueoutput, output_daily:mentalopen_trueoutput})
   #
