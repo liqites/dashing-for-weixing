@@ -31,7 +31,18 @@ $text-danger-color: #fff;
   -moz-animation:     $animation-name $duration $function #{$animation-iteration-count};
   -ms-animation:      $animation-name $duration $function #{$animation-iteration-count};
 }
+//wayne add it
+.fixBg{
+  background:url(/assets/draft.png) no-repeat center center;
+  background-size:cover;
+  position:fixed;
+  z-index:-1;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
 
+}
 // ----------------------------------------------------------------------------
 // Base styles
 // ----------------------------------------------------------------------------
@@ -148,6 +159,7 @@ h3 {
   width: 100%;
   display: table-cell;
   vertical-align: middle;
+  background:rgba(255,255,255,0.3);
 }
 
 .widget.status-warning {
