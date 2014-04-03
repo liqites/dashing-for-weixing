@@ -4,7 +4,7 @@ class Dashing.Highchart extends Dashing.Widget
   @accessor 'category',->
     if @get('date') then @get('date')
   @accessor 'series',->
-    if @get('finished')
+    if @get("graphtype")=="column"
       return [{
                 type:"column"
                 data: @get('unfinished')
@@ -20,11 +20,17 @@ class Dashing.Highchart extends Dashing.Widget
                 data: @get('plan')
                 color:"#fff"
               }]
+    else if @get("graphtype")=="line"
+      return [{
+                type:"line"
+                data: @get('points')
+                color: "#fff"
+              }]
   ready: ->
     # This is fired when the widget is done being rendered
     @chart = new Highcharts.Chart
       chart:
-        renderTo: "HCcontainer"
+        renderTo: @get("id")
         backgroundColor:"rgba(0,0,0,0)"
       title:""
       legend:

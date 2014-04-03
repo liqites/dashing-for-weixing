@@ -10,7 +10,6 @@ class Dashing.Graph extends Dashing.Widget
 
   ready: ->
     container = $(@node).parent()
-    console.log @get('output')
     # Gross hacks. Let's fix this.
     width = (Dashing.widget_base_dimensions[0] * container.data("sizex")) + Dashing.widget_margins[0] * 2 * (container.data("sizex") - 1)
     height = (Dashing.widget_base_dimensions[1] * container.data("sizey"))

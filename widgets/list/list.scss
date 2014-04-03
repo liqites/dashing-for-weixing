@@ -19,15 +19,18 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 
   .title {
     color: $title-color;
+    margin-top:-50px;
   }
 
   .timeRange{
     margin-top:-9px;
-    margin-bottom:10px;
+    margin-bottom:40px;
+
+
 
     .button{
       color:rgba(255,255,255,0.6);
-      margin:0px 10px;
+      margin:0px 5px;
       position:relative;
       top:3px;
       font-size:25px;
