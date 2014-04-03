@@ -1,0 +1,24 @@
+@import "basicDashing.scss";
+.widget-title {
+  h1{
+    margin-bottom:25px;
+  }
+  .button{
+    $origin-color:rgba(255,255,255,0.6);
+    $hover-color:rgba(255,255,255,1);
+
+    border:1px solid $origin-color;
+    color:$origin-color;
+    padding:6px 30px;
+    font-size:15px;
+    cursor:pointer;
+    @include transition(color);
+    @include transition(borderColor);
+    @include border-radius-same(3px);
+
+    &:hover{
+      color:$hover-color;
+      border-color:$hover-color;
+    }
+  }
+}
