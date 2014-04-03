@@ -95,17 +95,29 @@ module Generator
     day_start = 0
     day_end = 0
     val = 0
-    count = 0
     current_date = Time.now
+    date = current_date
     data = []
-    #for i in 0..array.length-1
-    #  date = current_date - (array.length-i-1)*SECONDS_IN_DAY
-    #  if date.wday < 6
-    #    count=count+1
-    #  else
+    for i in 0..array.length-1
+      date = current_date - (array.length-1-i)*SECONDS_IN_DAY
+      if date.wday == 0
+        day_start = i
+      end
 
-    #  end
-    #end
+      if date.wday == 6
+        day_end = i
+
+        #end_of week,
+        #start getting value
+        count = day_end - day_start + 1
+        val = generate_array_sum(array[day_start..day_end])
+        average = val/count
+        for j in day_start..day_end
+          data[i] = average
+        end
+        val = 0
+      end
+    end
     data
   end
 
