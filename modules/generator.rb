@@ -83,7 +83,7 @@ module Generator
     else
       data = []
       for i in 0..oriarray.length-1
-        data[i] = oriarray[i]-targetarray[i]
+        data[i] = (oriarray[i]-targetarray[i]).round(2)
       end
       data
     end
@@ -110,10 +110,12 @@ module Generator
         #end_of week,
         #start getting value
         count = day_end - day_start + 1
+        puts '-----------------------'
         puts count
-        puts array[day_start..day_end]
+        puts array[day_start..day_end].to_s
         val = generate_array_sum(array[day_start..day_end])
         puts val
+        puts '-----------------------'
         average = val/count
         for j in day_start..day_end
           data[j] = average

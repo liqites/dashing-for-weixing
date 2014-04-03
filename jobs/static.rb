@@ -17,6 +17,7 @@ metalclose_aprovedplan = Generator.generate_data(20,45,30)
 metalclose_plan_30b = Generator.generate_data(20,50.0,20.0)
 #@@前30天完工数
 metalclose_finished = Generator.generate_data(20,49.0,10.0)
+
 #@@前30天实际产量
 metalclose_trueoutput = Generator.generate_data(20,70.0,20.0)
 #@@前30天缺数 = 计划数 - 完工数
