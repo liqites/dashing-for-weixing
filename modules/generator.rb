@@ -113,9 +113,11 @@ module Generator
         val = generate_array_sum(array[day_start..day_end])
         average = val/count
         for j in day_start..day_end
-          data[i] = average
+          data[j] = average
         end
         val = 0
+        day_start = 0
+        day_end = 0
       end
     end
     data
