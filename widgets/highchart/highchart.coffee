@@ -43,7 +43,7 @@ class Dashing.Highchart extends Dashing.Widget
         bar:
           color:"#fff"
         column:
-          stacking:'normal'
+          stacking:@get("stacking")
           borderWidth:0
       xAxis:
         lineColor:
