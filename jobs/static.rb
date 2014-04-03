@@ -44,7 +44,6 @@ send_event('metalclose_sum_planunfinished',{value:(Generator.generate_array_sum(
 
 # 前一个月的实际产量周日均与实际产量的对比
 
-
 # 后30天的每日计划量线性图
 send_event('mentalclose_plan_30f',{date:date_30f,points:metalclose_plan_30f})
 
