@@ -5,7 +5,7 @@ $background-color:  #dc5945;
 
 $title-color:       rgba(255, 255, 255, 0.7);
 $moreinfo-color:    rgba(255, 255, 255, 0.3);
-$tick-color:        rgba(0, 0, 0, 0.4);
+$tick-color:        rgba(0, 0, 0, 0.6);
 
 
 // ----------------------------------------------------------------------------
@@ -13,7 +13,6 @@ $tick-color:        rgba(0, 0, 0, 0.4);
 // ----------------------------------------------------------------------------
 .widget-graph {
 
-  background-color: $background-color;
   position: relative;
 
 
@@ -51,7 +50,6 @@ $tick-color:        rgba(0, 0, 0, 0.4);
       padding-bottom: 3px;
     }
   }
-
   .y_ticks {
     font-size: 20px;
     fill: $tick-color;
@@ -61,5 +59,29 @@ $tick-color:        rgba(0, 0, 0, 0.4);
   .domain {
     display: none;
   }
-
+  h1{
+    margin-top:-20px;
+  }
+  h2{
+    position:relative;
+    margin-top:0px;
+  }
+  .dateRange{
+    color: $title-color;
+    position:absolute;
+    left:0px;
+    right:0px;
+    text-align:center;
+    margin-top:-17px;
+    font-size:18px;
+  }
+  .lastDay{
+    position:absolute;
+    left:0px;
+    right:0px;
+    margin-top:-15px;
+    text-align:center;
+    font-size:14px;
+    color:rgba(255,255,255,0.8)
+  }
 }

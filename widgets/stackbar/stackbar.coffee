@@ -3,6 +3,7 @@ class Dashing.Stackbar extends Dashing.Widget
   @accessor 'current', ->
     return @get('displayedValue') if @get('displayedValue')
     points = @get('points')
+    console.log
     if points
       points[points.length - 1].y
 
