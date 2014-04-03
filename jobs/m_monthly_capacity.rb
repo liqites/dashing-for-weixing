@@ -1,4 +1,7 @@
+require_relative '../modules/generator'
 # :first_in sets how long it takes before the job is first run. In this case, it is run immediately
-SCHEDULER.every '1m', :first_in => 0 do |job|
+data = Generator.generate_capicity(30,50.0,30.0,0.03,0.02,45,30)
+SCHEDULER.every '10s', :first_in => 0 do |job|
+  #Generator.generate_capicity(10,50.0,30.0,0.03,0.02,45,30)
   send_event('widget_id', { })
 end
