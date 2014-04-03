@@ -8,6 +8,6 @@ miscapicity = Generator.generate_rate_data(finishcapicity,0.03,0.02)
 SCHEDULER.every '10s', :first_in => 0 do |job|
   #Generator.generate_capicity(10,50.0,30.0,0.03,0.02,45,30)
 
-  send_event('widget_id', {date:date,plan:plan,truecapicity:finishcapicity,miscapicity:miscapicity })
-
+  send_event('illustrate', {date:date,plan:plan,truecapicity:finishcapicity,miscapicity:miscapicity })
+  send_event('column', {date:date,plan:plan,truecapicity:finishcapicity,miscapicity:miscapicity })
 end

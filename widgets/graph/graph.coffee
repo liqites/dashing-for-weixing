@@ -1,5 +1,10 @@
 class Dashing.Graph extends Dashing.Widget
-
+  @accessor 'lastDay',->
+    date=@get('date')
+    if date then date[date.length-1]
+  @accessor 'dateRange',->
+    date=@get('date')
+    if date then date[0]+" ~ "+date[date.length-1]
   @accessor 'current', ->
 #    return @get('displayedValue') if @get('displayedValue')
     plan = @get('plan')
@@ -33,7 +38,7 @@ class Dashing.Graph extends Dashing.Widget
     x_axis = new Rickshaw.Graph.Axis.X({
       graph: @graph
       tickFormat:(x)->
-        date[x]
+
     })
     y_axis = new Rickshaw.Graph.Axis.Y(graph: @graph, tickFormat: Rickshaw.Fixtures.Number.formatKMBT)
     @graph.render()

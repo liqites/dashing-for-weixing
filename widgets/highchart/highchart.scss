@@ -1,3 +1,13 @@
-.widget-highchart {
+$title-color:rgba(255, 255, 255, 0.7);
 
+.widget-highchart {
+   .title{
+     color:$title-color;
+     position:absolute;
+     left:0px;
+     right:0px;
+     top:5px;
+     text-align:center;
+
+   }
 }
