@@ -37,7 +37,7 @@ send_event('metalclose_capicity', {date:date_30b, plan:metalclose_aprovedplan, f
 send_event('metalclose_plan',{date:date_7b15f,plan:(metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),finished:Generator.generate_new_array(22,7,metalclose_finished),unfinished:Generator.generate_array_minus((metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),Generator.generate_new_array(22,7,metalclose_finished))})
 
 # 前一个月的累计误期值
-send_event('metalclose_sum_unfinished',{value:Generator.generate_array_sum(metalclose_unfinished)})
+send_event('metalclose_sum_unfinished',{value:Generator.generate_array_sum(metalclose_unfinished).round(2)})
 
 # 前一个月的存量值+后15天的计划值
 send_event('metalclose_sum_planunfinished',{value:(Generator.generate_array_sum(metalclose_plan_30b)+Generator.generate_array_sum(metalclose_plan_30f.first(15)))})
