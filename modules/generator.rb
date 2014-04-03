@@ -8,22 +8,22 @@ module Generator
   # @ratemin float
   # @plancapmax integer
   # @plancapmin integer
-	def self.generate_capicity interval,truecapmax,truecapmin,ratemax,ratemin,plancapmax,plancapmin
+	def self.generate_capicity interval,finishcapmax,finishcapmin,ratemax,ratemin,aprovecapmax,aprovecapmin
     start_time = Time.now
     dates = []
-    plancapcity = []
+    approvecapcity = []
     truecapicity = []
     miscapicity = []
     prand = Random.new(1234)
     for i in 0..(interval.to_i-1)
       dates[i] = (Time.now - (interval.to_i-i-1)*SECONDS_IN_DAY).strftime("%F")
-      plancapcity[i] = prand.rand(truecapmin..truecapmax)
-      miscapicity[i] = plancapcity[i] * prand.rand(ratemin..ratemax)
-      plancapcity[i] = prand.rand(plancapmin..plancapmax)
+      truecapicity[i] = prand.rand(finishcapmin..finishcapmax)
+      miscapicity[i] = truecapicity[i] * prand.rand(ratemin..ratemax)
+      approvecapcity[i] = prand.rand(aprovecapmin..aprovecapmax)
     end
     result = {}
-    result = {'date'=>dates,'truecapicity'=>truecapicity,'plancapcity'=>plancapcity,'miscapicity'=>miscapicity}
-    puts result
+    result = {'date'=>dates,'truecapicity'=>truecapicity,'approvecapcity'=>approvecapcity,'miscapicity'=>miscapicity}
+    #puts result
   end
 
   # generate_daily_capicity
@@ -38,7 +38,7 @@ module Generator
   def self.generate_plan interval,planmax,planmin
     plan = []
     prand = Random.new(1234)
-    for i in 0..(interval.to_i -1)
+    for i in 0..(interval.to_i-1)
       plan[i] = prand.rand(planmin..planmin)
     end
     plan
@@ -48,9 +48,9 @@ module Generator
   # return week average
   def self.generate_week_truecapicity truecapicity
     interval = truecapicity.length
-    start_time = Time.now - (interval.to_i - i -1)*SECONDS_IN_DAY
+    start_time = Time.now - (interval.to_i-i-1)*SECONDS_IN_DAY
     for i in 0..(interval - 1)
-      
+
     end
   end
 end

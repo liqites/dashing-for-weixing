@@ -3,5 +3,5 @@ require_relative '../modules/generator'
 data = Generator.generate_capicity(30,50.0,30.0,0.03,0.02,45,30)
 SCHEDULER.every '10s', :first_in => 0 do |job|
   #Generator.generate_capicity(10,50.0,30.0,0.03,0.02,45,30)
-  send_event('widget_id', {date:data["date"],plan:data["plancapcity"],truecapicity:data["truecapicity"],miscapicity:data["miscapicity"] })
+  send_event('widget_id', {date:data["date"],plan:data["approvecapcity"],truecapicity:data["truecapicity"],miscapicity:data["miscapicity"] })
 end
