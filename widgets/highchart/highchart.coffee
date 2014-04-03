@@ -4,16 +4,21 @@ class Dashing.Highchart extends Dashing.Widget
   @accessor 'category',->
     if @get('date') then @get('date')
   @accessor 'series',->
-    if @get('truecapicity')
+    if @get('finished')
       return [{
                 type:"column"
-                data: @get('miscapicity')
+                data: @get('unfinished')
                 color: "#ff8e8e"
                }
               {
                 type:"column"
-                data: @get('truecapicity')
+                data: @get('finished')
                 color:"#fff"
+              }
+              {
+                type:"spline"
+                data: @get('plan')
+                color:"green"
               }]
   ready: ->
     # This is fired when the widget is done being rendered
