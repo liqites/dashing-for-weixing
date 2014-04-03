@@ -1,56 +1,58 @@
 module Generator
   SECONDS_IN_DAY = 24*60*60
-	# generate capicity
-	# @interval how many days you want?
-	# @truecapmax float
-  # @truecapmin float
-  # @ratemax float
-  # @ratemin float
-  # @plancapmax integer
-  # @plancapmin integer
-	def self.generate_capicity interval,finishcapmax,finishcapmin,ratemax,ratemin,aprovecapmax,aprovecapmin
-    start_time = Time.now
-    dates = []
-    approvecapcity = []
-    truecapicity = []
-    miscapicity = []
-    prand = Random.new(1234)
+
+  #===========================
+  #generate date
+  #===========================
+  def self.generate_date interval
+    date = []
     for i in 0..(interval.to_i-1)
-      dates[i] = (Time.now - (interval.to_i-i-1)*SECONDS_IN_DAY).strftime("%F")
-      truecapicity[i] = prand.rand(finishcapmin..finishcapmax)
-      miscapicity[i] = truecapicity[i] * prand.rand(ratemin..ratemax)
-      approvecapcity[i] = prand.rand(aprovecapmin..aprovecapmax)
+      date[i] = (Time.now - (interval.to_i-i-1)*SECONDS_IN_DAY).strftime("%F")
     end
-    result = {}
-    result = {'date'=>dates,'finishcapicity'=>truecapicity,'approvecapcity'=>approvecapcity,'miscapicity'=>miscapicity}
-    #puts result
+    date
   end
 
-  # generate_daily_capicity
-  # @orival original value
-  # @intervalmax integar
-  # @intervalmin integer
-  def self.generate_daily_capicity orival,intervalmax,intervalmin
+  #===========================
+  #generate data
+  #===========================
+  def self.generate_data interval,max,min
+    data = []
+    prand = Random.new(1234)
+    for i in 0..(interval.to_i-1)
+      data[i] = prand.rand(min..max)
+    end
+    data
+  end
+
+  #===========================
+  #generate rate data
+  #===========================
+  def self.generate_rate_data array,ratemax,ratemin
+    data = []
+    prand = Random.new(1234)
+    for i in 0..(array.count-1)
+      data[i] = array[i]*prand.rand(ratemin..ratemax)
+    end
+    data
+  end
+
+  #===========================
+  #generate array sum
+  #===========================
+  def self.generate_array_sum array
+    array.inject{|sum,x| sum + x}
+  end
+
+  #week average
+  def self.gererate_week_average array
+    data = []
+
+    data
+  end
+
+  #single value
+  def self.generate_single_value orival,intervalmax,intervalmin
     prand = Random.new(1234)
     orival = orival + prand.rand(intervalmin..intervalmax)
-  end
-
-  def self.generate_plan interval,planmax,planmin
-    plan = []
-    prand = Random.new(1234)
-    for i in 0..(interval.to_i-1)
-      plan[i] = prand.rand(planmin..planmin)
-    end
-    plan
-  end
-
-  # pass array of truecapicity
-  # return week average
-  def self.generate_week_truecapicity truecapicity
-    interval = truecapicity.length
-    start_time = Time.now - (interval.to_i-i-1)*SECONDS_IN_DAY
-    for i in 0..(interval - 1)
-
-    end
   end
 end
