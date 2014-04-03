@@ -21,7 +21,7 @@ module Generator
     data = []
     prand = Random.new(1234)
     for i in 0..(interval.to_i-1)
-      data[i] = prand.rand(min..max)
+      data[i] = prand.rand(min..max).round(2)
     end
     data
   end
@@ -46,9 +46,9 @@ module Generator
     prand = Random.new(1234)
     for i in 0..(oriarray.length-1)
       if i < interval
-        data[i] = oriarray[i]*prand.rand(0.9..0.95)
+        data[i] = oriarray[i]*prand.rand(0.6..0.95).round(2)
       elsif i == interval
-        data[i] = oriarray[i]*prand.rand(0..1.0)
+        data[i] = oriarray[i]*prand.rand(0..1.0).round(2)
       end
       data[i] = 0
     end
@@ -62,7 +62,7 @@ module Generator
     data = []
     prand = Random.new(1234)
     for i in 0..(array.count-1)
-      data[i] = array[i]*prand.rand(ratemin..ratemax)
+      data[i] = array[i]*prand.rand(ratemin..ratemax).round(2)
     end
     data
   end
@@ -90,7 +90,7 @@ module Generator
   end
 
   #week average
-  def self.gererate_week_average array
+  def self.generate_week_average array
     #set today as the end day
     day_start = 0
     day_end = 0
@@ -104,13 +104,16 @@ module Generator
         day_start = i
       end
 
-      if date.wday == 6
+      if date.wday == 6 || i==array.length-1
         day_end = i
 
         #end_of week,
         #start getting value
         count = day_end - day_start + 1
+        puts count
+        puts array[day_start..day_end]
         val = generate_array_sum(array[day_start..day_end])
+        puts val
         average = val/count
         for j in day_start..day_end
           data[j] = average
@@ -126,6 +129,6 @@ module Generator
   #single value
   def self.generate_single_value orival,intervalmax,intervalmin
     prand = Random.new(1234)
-    orival = orival + prand.rand(intervalmin..intervalmax)
+    orival = orival + prand.rand(intervalmin..intervalmax).round(2)
   end
 end
