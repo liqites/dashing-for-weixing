@@ -199,7 +199,9 @@ order_daily_sum = 0
 order_buy = 0
 #@@ 当前收费金额
 order_fee = 0
+
 SCHEDULER.every '2s', :first_in => 0 do |job|
+
   puts "push data"
   mentalclose_trueoutput = Generator.generate_single_value(mentalclose_trueoutput,10,2)
   mentalopen_trueoutput = Generator.generate_single_value(mentalopen_trueoutput,8,2)
