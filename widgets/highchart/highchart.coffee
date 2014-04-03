@@ -18,7 +18,7 @@ class Dashing.Highchart extends Dashing.Widget
               {
                 type:"spline"
                 data: @get('plan')
-                color:"green"
+                color:"#fff"
               }]
   ready: ->
     # This is fired when the widget is done being rendered
