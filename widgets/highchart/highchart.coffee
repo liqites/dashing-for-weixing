@@ -8,17 +8,17 @@ class Dashing.Highchart extends Dashing.Widget
       return [{
                 type:"column"
                 data: @get('unfinished')
-                color: "#ff8e8e"
+                color: "#fd7171"
                }
               {
                 type:"column"
                 data: @get('finished')
-                color:"#fff"
+                color:"#000"
               }
               {
                 type:"spline"
                 data: @get('plan')
-                color:"#fff"
+                color:"#dcdcdc"
               }]
     else if @get("graphtype")=="line"
       return [{
