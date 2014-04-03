@@ -1,7 +1,19 @@
 <div class="gridster">
   <ul>
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="my_widget" data-view="Text"></div>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="welcome" data-view="Title" data-title="订单分析表" data-button="退出全屏"></div>
+    </li>
+    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
+      <div  data-id="order_daily_num" data-view="Text" data-title="今日订单份数" ></div>
+    </li>
+    <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
+      <div  data-id="order_daily_sum" data-view="Text" data-title="今日订单总量" ></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="4" data-sizey="1">
+      <div data-class="small-chart" data-columns="one" data-id="order_cusordercate" data-view="Highchart" data-title="美特斯邦威订单份数" data-graphtype="column"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-class="small-chart" data-id="order_cusordernum"data-view="Highchart" data-title="各订单类型数量" data-graphtype="bar" data-columns="three"></div>
     </li>
   </ul>
 </div>

@@ -1,8 +1,13 @@
 class Dashing.Highchart extends Dashing.Widget
-
   @accessor 'current', Dashing.AnimatedValue
   @accessor 'category',->
-    if @get('date') then @get('date')
+    if @get('date')
+      return @get('date')
+    if @get("graphtype")=="bar"
+      if @get("columns")=="five"
+          return ["美特斯邦威","森马","Only","H&M","Zara"]
+      if @get("columns")=="three"
+        return ["羽绒服","运动服","外套"]
   @accessor 'series',->
     if @get("graphtype")=="column"
       if @get("stacking")
@@ -22,13 +27,44 @@ class Dashing.Highchart extends Dashing.Widget
                 color:"#dcdcdc"
               }]
       else
-        return [{
+        if @get("columns") == 'three'
+          return [
+                  {
+                    type:"column"
+                    name:"台州"
+                    data: [@get("a"),@get("b"),@get("c")]
+                    color: "#fd7171"
+                  }
+                  {
+                    type:"column"
+                    name:"上海"
+                    data: [@get("a"),@get("b"),@get("c")]
+                    color:"#000"
+                  }
+                  {
+                    type:"column"
+                    name:"温州"
+                    data:[@get("a"),@get("b"),@get("c")]
+                    color:"#fff"
+                  }]
+        else if @get("columns") == 'one'
+          console.log @get("category")
+          return [
+                  {
+                    type:"column"
+                    data: @get("value")
+                    color: "#fff"
+                  }]
+        else
+          return [{
                   type:"column"
-                  data: [10,20,30]
+                  name:"1"
+                  data: [[40],50,30]
                   color: "#fd7171"
                 }
                 {
                   type:"column"
+                  name:"1"
                   data: [10,20,30]
                   color:"#000"
                 }]
@@ -40,11 +76,31 @@ class Dashing.Highchart extends Dashing.Widget
               }]
     else if @get("graphtype")=="bar"
       console.log @get("b")
+      if @get("columns")=="five"
+          return [{
+                  type:"bar"
+                  data: [@get("a"),@get("b"),@get("c"),@get("d"),@get("e")]
+                  color: "#fff"
+                }]
+      else if @get("columns")=="thrss"
+          return [{
+                  type:"bar"
+                  data: [@get("a"),@get("b"),@get("c")]
+                  color: "#fff"
+          }]
+      else
+          return [{
+                  type:"bar"
+                  data: [10,20,30]
+                  color: "#fff"
+                  }]
+    else if @get("graphtype")=="pie"
+      console.log @get("b")
       return [{
-        type:"bar"
-        data: [10,20,30]
+        type:"pie"
+        data: [["台州",@get("a")],["上海",@get("b")],["温州",@get("c")],["大洋外贸",@get("d")],["成都",@get("e")],["广东",@get("f")],["青岛",@get("g")],["石家庄",@get("h")],["厦门",@get("i")]]
         color: "#fff"
-      }]
+    }]
   ready: ->
     # This is fired when the widget is done being rendered
     @chart = new Highcharts.Chart
@@ -53,7 +109,11 @@ class Dashing.Highchart extends Dashing.Widget
         backgroundColor:"rgba(0,0,0,0)"
       title:""
       legend:
-        enabled:false
+        enabled:if @get("legend") then true else false
+        borderColor:"rgba(255,255,255,0.7)"
+        itemMarginBottom:2
+        itemStyle:
+            fontSize:"10px"
       tooltip:
         enabled:false
       credits:
@@ -64,6 +124,8 @@ class Dashing.Highchart extends Dashing.Widget
         column:
           stacking:@get("stacking")
           borderWidth:0
+        pie:
+          showInLegend:true
       xAxis:
         lineColor:
           color:"rgba(0,0,0,0)"
