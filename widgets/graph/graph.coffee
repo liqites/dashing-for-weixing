@@ -29,7 +29,7 @@ class Dashing.Graph extends Dashing.Widget
     @graph.series[0].data=[]
     plan = @get('output')
     date = @get('date')
-    for scale in [0..29]
+    for scale in [0..19]
       @graph.series[0].data.push {x:scale,y:plan[scale]}
     x_axis = new Rickshaw.Graph.Axis.X({
       graph: @graph
