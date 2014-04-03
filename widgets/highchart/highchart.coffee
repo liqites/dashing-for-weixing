@@ -5,7 +5,8 @@ class Dashing.Highchart extends Dashing.Widget
     if @get('date') then @get('date')
   @accessor 'series',->
     if @get("graphtype")=="column"
-      return [{
+      if @get("stacking")
+          return [{
                 type:"column"
                 data: @get('unfinished')
                 color: "#fd7171"
@@ -20,12 +21,30 @@ class Dashing.Highchart extends Dashing.Widget
                 data: @get('plan')
                 color:"#dcdcdc"
               }]
+      else
+        return [{
+                  type:"column"
+                  data: [10,20,30]
+                  color: "#fd7171"
+                }
+                {
+                  type:"column"
+                  data: [10,20,30]
+                  color:"#000"
+                }]
     else if @get("graphtype")=="line"
       return [{
                 type:"line"
                 data: @get('points')
                 color: "#fff"
               }]
+    else if @get("graphtype")=="bar"
+      console.log @get("b")
+      return [{
+        type:"bar"
+        data: [10,20,30]
+        color: "#fff"
+      }]
   ready: ->
     # This is fired when the widget is done being rendered
     @chart = new Highcharts.Chart
