@@ -25,8 +25,10 @@ require_relative '../modules/generator'
 #  order_fee = Generator.generate_single_value(order_fee,200,20)
   #
 
+
 #  send_event('metalclose_output', { outpu_daily:mentalclose_trueoutput})
 #  send_event('metalopen_output', { output_daily:mentalopen_trueoutput})
+
 
 # send_event('order_daily_num', {value:order_daily_num })
 #  send_event('order_daily_sum', {value:order_daily_sum })
