@@ -1,6 +1,7 @@
 $title-color:rgba(255, 255, 255, 0.7);
 
 .widget-highchart {
+  padding-bottom:0px !important;
    .title{
      color:$title-color;
      position:absolute;
@@ -11,6 +12,6 @@ $title-color:rgba(255, 255, 255, 0.7);
 
    }
   .small-chart{
-    height:160px !important;
+    height:195px !important;
   }
 }

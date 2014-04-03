@@ -1,5 +1,4 @@
 class Dashing.Highchart extends Dashing.Widget
-
   @accessor 'current', Dashing.AnimatedValue
   @accessor 'category',->
     if @get('date') then @get('date')
@@ -53,7 +52,10 @@ class Dashing.Highchart extends Dashing.Widget
         backgroundColor:"rgba(0,0,0,0)"
       title:""
       legend:
-        enabled:false
+        enabled:if @get("legend") then true else false
+        borderColor:"rgba(255,255,255,0.7)"
+        itemStyle:
+            fontSize:"10px"
       tooltip:
         enabled:false
       credits:
