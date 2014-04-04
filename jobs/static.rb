@@ -99,12 +99,12 @@ metalproofing_unfinished =Generator.generate_array_minus(metalproofing_plan_30b,
 # 前一个月缺数、完工数、核定产能对比
 send_event('mentalproofing_capacity',{date:date_30b,finished:metalproofing_finished,unfinished:metalproofing_unfinished})
 # （一个月）每日完工数占计划数比率
-send_event('mentalproofing_finishrate',{value:(Generator.generate_array_sum(metalproofing_finished)/Generator.generate_array_sum(metalproofing_plan_30b)).round(2)})
+send_event('mentalproofing_finishrate',{value:(Generator.generate_array_sum(metalproofing_finished)/Generator.generate_array_sum(metalproofing_plan_30b)*100).round(0)})
 #send_event('mentalproofing_finishrate',{a:Generator.generate_array_sum(metalproofing_finished),b:Generator.generate_array_sum(metalproofing_plan_30b)})
 # 前一个月的累计误期值
 send_event('mentalproofing_unfinished',{value:Generator.generate_array_sum(metalproofing_unfinished)})
 # 总累计误期占总计划量的比值
-send_event('mentalprooging_unfinishedrate',{value:(Generator.generate_array_sum(metalproofing_unfinished)/Generator.generate_array_sum(metalproofing_plan_30b)).round(2)})
+send_event('mentalprooging_unfinishedrate',{value:(Generator.generate_array_sum(metalproofing_unfinished)/Generator.generate_array_sum(metalproofing_plan_30b)*100).round(0)})
 #send_event('mentalprooging_unfinishedrate',{a:Generator.generate_array_sum(metalproofing_unfinished),b:Generator.generate_array_sum(metalproofing_plan_30b)})
 
 ###########

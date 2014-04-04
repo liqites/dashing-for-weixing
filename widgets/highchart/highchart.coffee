@@ -9,7 +9,6 @@ class Dashing.Highchart extends Dashing.Widget
           return ["美特斯邦威","森马","Only","H&M","Zara"]
       if @get("columns")=="three"
         if @get("label")
-          console.log "dsa"
           return labels[@get("label")-1]
         else
           return ["羽绒服","运动服","外套"]
@@ -37,19 +36,19 @@ class Dashing.Highchart extends Dashing.Widget
                   {
                     type:"column"
                     name:"台州"
-                    data: [@get("a"),@get("b"),@get("c")]
+                    data: @get("a")
                     color: "#fd7171"
                   }
                   {
                     type:"column"
                     name:"上海"
-                    data: [@get("a"),@get("b"),@get("c")]
+                    data: @get("b")
                     color:"#000"
                   }
                   {
                     type:"column"
                     name:"温州"
-                    data:[@get("a"),@get("b"),@get("c")]
+                    data:@get("c")
                     color:"#fff"
                   }]
         else if @get("columns") == 'one'
@@ -111,7 +110,7 @@ class Dashing.Highchart extends Dashing.Widget
                   color: "#fff"
                   }]
     else if @get("graphtype")=="pie"
-      console.log @get("b")
+
       if @get("columns") == "two"
         return [{
           type:"pie"

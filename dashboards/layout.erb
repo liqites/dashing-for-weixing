@@ -31,8 +31,13 @@
     <% end %>
   </body>
 <script type="text/javascript">
-// window.addEventListener('load',function(){
-//      $('.gridster ul:first').data('gridster').disable();
-//  },true);
+  $(document).ready(function(){
+      var interval=window.setInterval(function(){
+          if($('.gridster ul:first').data('gridster')){
+              $('.gridster ul:first').data('gridster').disable();
+              window.clearInterval(interval)
+          }
+      },500)
+  })
 </script>
 </html>
