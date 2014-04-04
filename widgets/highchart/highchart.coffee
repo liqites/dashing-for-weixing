@@ -1,13 +1,18 @@
 class Dashing.Highchart extends Dashing.Widget
   @accessor 'current', Dashing.AnimatedValue
   @accessor 'category',->
+    labels=[["塑钢二车间","塑钢三车间","尼龙一车间"],["金属一车间","金属二车间","尼龙三车间"],["塑钢二车间","塑钢三车间","尼龙一车间"],["金属一车间","金属二车间","尼龙三车间"]]
     if @get('date')
       return @get('date')
     if @get("graphtype")=="bar"
       if @get("columns")=="five"
           return ["美特斯邦威","森马","Only","H&M","Zara"]
       if @get("columns")=="three"
-        return ["羽绒服","运动服","外套"]
+        if @get("label")
+          console.log "dsa"
+          return labels[@get("label")-1]
+        else
+          return ["羽绒服","运动服","外套"]
   @accessor 'series',->
     if @get("graphtype")=="column"
       if @get("stacking")
@@ -48,12 +53,24 @@ class Dashing.Highchart extends Dashing.Widget
                     color:"#fff"
                   }]
         else if @get("columns") == 'one'
-          console.log @get("category")
           return [
                   {
                     type:"column"
                     data: @get("value")
                     color: "#fff"
+                  }]
+        else if @get("columns") == 'two'
+          return [
+                  {
+                    type:"column"
+                    name:"塑钢一车间"
+                    data: [@get("a")]
+                    color: "#fd7171"
+                  },{
+                    type:"column"
+                    name:"全厂"
+                    data: [@get("b")]
+                    color: "#000"
                   }]
         else
           return [{
@@ -75,14 +92,13 @@ class Dashing.Highchart extends Dashing.Widget
                 color: "#fff"
               }]
     else if @get("graphtype")=="bar"
-      console.log @get("b")
       if @get("columns")=="five"
           return [{
                   type:"bar"
                   data: [@get("a"),@get("b"),@get("c"),@get("d"),@get("e")]
                   color: "#fff"
                 }]
-      else if @get("columns")=="thrss"
+      else if @get("columns")=="three"
           return [{
                   type:"bar"
                   data: [@get("a"),@get("b"),@get("c")]
@@ -96,11 +112,18 @@ class Dashing.Highchart extends Dashing.Widget
                   }]
     else if @get("graphtype")=="pie"
       console.log @get("b")
-      return [{
-        type:"pie"
-        data: [["台州",@get("a")],["上海",@get("b")],["温州",@get("c")],["大洋外贸",@get("d")],["成都",@get("e")],["广东",@get("f")],["青岛",@get("g")],["石家庄",@get("h")],["厦门",@get("i")]]
-        color: "#fff"
-    }]
+      if @get("columns") == "two"
+        return [{
+          type:"pie"
+          data: [["每日完工数",@get("a")],["计划数",@get("b")]]
+          color: "#fff"
+        }]
+      else
+        return [{
+          type:"pie"
+          data: [["台州",@get("a")],["上海",@get("b")],["温州",@get("c")],["大洋外贸",@get("d")],["成都",@get("e")],["广东",@get("f")],["青岛",@get("g")],["石家庄",@get("h")],["厦门",@get("i")]]
+          color: "#fff"
+      }]
   ready: ->
     # This is fired when the widget is done being rendered
     @chart = new Highcharts.Chart
