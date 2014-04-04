@@ -144,11 +144,14 @@ send_event('order_sameperiod',{date:date_30b,last:order_lastyear_30b,current:ord
 #############
 #销售对比
 #############
+#@@七天的时间
+date_7b = Generator.generate_date(7)
 # 一段时间华北采购与收费金额对比
 send_event('sale_hubei',{a:prand.rand(360000...400000),b:prand.rand(360000...400000)})
 
 # 一段时间内，台州分公司，上海分公司，温州分公司采购金额对比
-send_event('sale_tws_buy',{a:prand.rand(10000..500000),b:prand.rand(20000..90000),c:prand.rand(200000..300000)})
+#send_event('sale_tws_buy',{a:prand.rand(10000..500000),b:prand.rand(20000..90000),c:prand.rand(200000..300000)})
+send_event('sale_tws_buy',{date:date_7b,a:Generator.generate_data(7,20000,8000),b:Generator.generate_data(7,15000,8000),c:Generator.generate_data(7,5000,4000)})
 
 # 一段时间内各分厂的采购金额占比
 send_event('sale_allsub_but',{a:prand.rand(10000..500000),b:prand.rand(10000..500000),c:prand.rand(10000..500000),d:prand.rand(10000..500000),e:prand.rand(10000..500000),f:prand.rand(10000..500000),g:prand.rand(10000..500000),h:prand.rand(10000..500000),i:prand.rand(10000..500000)})
