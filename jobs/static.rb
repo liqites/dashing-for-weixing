@@ -39,7 +39,7 @@ send_event('metalclose_plan',{date:date_7b15f,plan:(metalclose_plan_30b.last(7)<
 # 前一个月的累计误期值
 send_event('metalclose_sum_unfinished',{value:Generator.generate_array_sum(metalclose_unfinished)})
 
-# 前一个月的存量值+后15天的计划值
+# 前一个月的存量值+后15天的计划值                     date_30b
 send_event('metalclose_sum_planunfinished',{value:(Generator.generate_array_sum(metalclose_plan_30b)+Generator.generate_array_sum(metalclose_plan_30f.first(15)))})
 
 # 前一个月的实际产量周日均与实际产量的对比
@@ -160,28 +160,28 @@ send_event('sale_order_sumnum',{a:prand.rand(5000..500000),b:prand.rand(5000..50
 #OEE&TEEP
 #############
 # 当前平均OEE
-send_event('oeeteep_currentoee',{value:prand.rand(40.0..50.0)})
+send_event('oeeteep_currentoee',{value:prand.rand(40.0..50.0).round(2)})
 
 # 当前平均TEEP
-send_event('oeeteep_currentteep',{value:prand.rand(40.0..42.0)})
+send_event('oeeteep_currentteep',{value:prand.rand(40.0..42.0).round(2)})
 
 # 某生产车间与全厂平均的OEE的对比
-send_event('oeeteep_facoee',{a:prand.rand(40.0..48.0),b:prand.rand(36.0..48.0)})
+send_event('oeeteep_facoee',{a:prand.rand(40.0..48.0).round(2),b:prand.rand(36.0..48.0).round(2)})
 
 # 某生产车间与全厂平均的TEEP的对比
-send_event('oeeteep_facteep',{a:prand.rand(39.7..48.8),b:prand.rand(32.0..45.0)})
+send_event('oeeteep_facteep',{a:prand.rand(39.7..48.8).round(2),b:prand.rand(32.0..45.0).round(2)})
 
 # 各生产车间OEE的前三名排行
-send_event('oeeteep_fst3oee',{a:prand.rand(55.0..58.0),b:prand.rand(48.0..53.0),c:prand.rand(45.0..48.0)})
+send_event('oeeteep_fst3oee',{a:prand.rand(55.0..58.0).round(2),b:prand.rand(48.0..53.0).round(2),c:prand.rand(45.0..48.0).round(2)})
 
 # 各生产车间TEEP的前三名排行
-send_event('oeeteep_fst3teep',{a:prand.rand(53.0..55.0),b:prand.rand(46.0..48.0),c:prand.rand(43.0..46.0)})
+send_event('oeeteep_fst3teep',{a:prand.rand(53.0..55.0).round(2),b:prand.rand(46.0..48.0).round(2),c:prand.rand(43.0..46.0).round(2)})
 
 # 各生产车间OEE的后三名排行
-send_event('oeeteep_lst3oee',{a:prand.rand(33.0..35.0),b:prand.rand(36.0..39.0),c:prand.rand(36.0..39.0)})
+send_event('oeeteep_lst3oee',{a:prand.rand(33.0..35.0).round(2),b:prand.rand(36.0..39.0).round(2),c:prand.rand(36.0..39.0).round(2)})
 
 # 各生产车间TEEP的后三名排行
-send_event('oeeteep_lst3teep',{a:prand.rand(31.0..33.0),b:prand.rand(34.7..45.8),c:prand.rand(36.5..40.0)})
+send_event('oeeteep_lst3teep',{a:prand.rand(31.0..33.0).round(2),b:prand.rand(34.7..45.8.round(2)),c:prand.rand(36.5..40.0).round(2)})
 
 # Daily
 ################
