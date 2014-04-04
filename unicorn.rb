@@ -1,8 +1,7 @@
-@dir = "../dashing-for-weixing/"
+@dir = "/home/tesls/projects/dashing-for-weixing/"
 
-worker_processes 2
+worker_processes 4
 working_directory @dir
-
 timeout 30
 
 listen "#{@dir}tmp/sockets/unicorn.sock", :backlog=>64
