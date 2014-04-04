@@ -6,5 +6,5 @@ gem 'dashing'
 gem 'twitter', '>= 5.0.0'
 #gem 'rack' => '1.4'
 gem 'unicorn'
-
+gem 'rack', '1.4.2'
 #gem 'activesupport'
