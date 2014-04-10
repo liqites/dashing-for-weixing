@@ -3,20 +3,16 @@ class Dashing.Pie extends Dashing.Widget
  @accessor 'category',->
 
  @accessor 'series',->
-
-
-    if @get("columns") == "two"
-      return [{
+    value=@get("value")
+    count=value.length-1
+    data=[]
+    for i in [0..count]
+      data.push [value[i].name,value[i].val]
+    return [{
         type:"pie"
-        data: [["每日完工数",@get("a")],["计划数",@get("b")]]
+        data: data
         color: "#fff"
-      }]
-    else
-      return [{
-        type:"pie"
-        data: [["台州",@get("a")],["上海",@get("b")],["温州",@get("c")],["大洋外贸",@get("d")],["成都",@get("e")],["广东",@get("f")],["青岛",@get("g")],["石家庄",@get("h")],["厦门",@get("i")]]
-        color: "#fff"
-      }]
+    }]
  ready: ->
   # This is fired when the widget is done being rendered
   @chart = new Highcharts.Chart

@@ -3,16 +3,17 @@ class Dashing.X1y2 extends Dashing.Widget
   @accessor 'category',->
     return @get("date")
   @accessor 'series',->
+     value=@get("value")
      series=[]
      colors=["#fd7171","#000","#dcdcdc"]
-     count=@get("date").length-1
+     count=value.length-1
      for i in [0..count]
-       series.push({
-         type:"column"
-         name:@get("value")[i].name
-         color: colors[i]
-         data:@get("value")[i].data
-       })
+       series.push {
+                      type:"column"
+                      name:value[i].title
+                      color: colors[i]
+                      data:value[i].value
+                  }
      return series
   ready: ->
     # This is fired when the widget is done being rendered

@@ -171,11 +171,11 @@ send_event('sale_allsub_buy',{value:[{name:"台州",val:prand.rand(10000..500000
 
 # 一段时间内总客户订单份数的排行汇总
 # send_event('sale_order_catenum',{a:prand.rand(10..70),b:prand.rand(10..70),c:prand.rand(10..70),d:prand.rand(10..70),e:prand.rand(10..70)})
-send_event('sale_order_catenum',{x:["美特斯邦威","森马","Only","H&M","Zara"],y:[prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70)]})
+send_event('sale_order_catenum',{type:"bar",x:["美特斯邦威","森马","Only","H&M","Zara"],y:[prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70)]})
 
 # 一段时间内总客户订单金额的排行汇总
 #send_event('sale_order_sumnum',{a:prand.rand(5000..500000),b:prand.rand(5000..500000),c:prand.rand(5000..500000),d:prand.rand(5000..500000),e:prand.rand(5000..500000)})
-send_event('sale_order_catenum',{x:["美特斯邦威","森马","Only","H&M","Zara"],y:[prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000)]})
+send_event('sale_order_sumnum',{type:"bar",x:["美特斯邦威","森马","Only","H&M","Zara"],y:[prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000)]})
 
 #############
 #OEE&TEEP
@@ -192,7 +192,7 @@ send_event('oeeteep_facoee',{x:["塑钢一车间","全厂"],y:[prand.rand(40.0..
 
 # 某生产车间与全厂平均的TEEP的对比
 #send_event('oeeteep_facteep',{a:prand.rand(39.7..48.8).round(2),b:prand.rand(32.0..45.0).round(2)})
-send_event('oeeteep_facoee',{x:["塑钢一车间","全厂"],y:[prand.rand(39.7..48.8).round(2),prand.rand(32.0..45.0).round(2)],type:"column"})
+send_event('oeeteep_facteep',{x:["塑钢一车间","全厂"],y:[prand.rand(39.7..48.8).round(2),prand.rand(32.0..45.0).round(2)],type:"column"})
 
 # 各生产车间OEE的前三名排行
 # send_event('oeeteep_fst3oee',{a:prand.rand(55.0..58.0).round(2),b:prand.rand(48.0..53.0).round(2),c:prand.rand(45.0..48.0).round(2)})
@@ -208,7 +208,7 @@ send_event('oeeteep_lst3oee',{x:["金属一车间","金属二车间","尼龙三�
 
 # 各生产车间TEEP的后三名排行
 #send_event('oeeteep_lst3teep',{a:prand.rand(31.0..33.0).round(2),b:prand.rand(34.7..45.8).round(2)),c:prand.rand(36.5..40.0).round(2)})
-send_event('oeeteep_lst3oee',{x:["金属一车间","金属二车间","尼龙三车间"],y:[prand.rand(31.0..33.0).round(2),prand.rand(34.7..45.8).round(2),prand.rand(36.5..40.0).round(2)],type:"bar"})
+send_event('oeeteep_lst3teep',{x:["金属一车间","金属二车间","尼龙三车间"],y:[prand.rand(31.0..33.0).round(2),prand.rand(34.7..45.8).round(2),prand.rand(36.5..40.0).round(2)],type:"bar"})
 
 # Daily
 ################
