@@ -28,7 +28,7 @@ send_event('jn_sale_allsub_buy',{value:[{name:"通用一部",val:prand.rand(1000
 send_event('jn_sale_order_catenum',{x:["通用","奔驰","宝马","大众","观致"],y:[prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70)]})
 
 # 一段时间内总客户订单金额的排行汇总
-send_event('jn_sale_order_catenum',{x:["通用","奔驰","宝马","大众","观致"],y:[prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000)]})
+send_event('jn_sale_order_sumnum',{x:["通用","奔驰","宝马","大众","观致"],y:[prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000)]})
 
 ############
 #生产监控表
@@ -67,7 +67,7 @@ send_event('jn_oeeteep_currentteep',{value:prand.rand(40.0..42.0).round(2)})
 send_event('jn_oeeteep_facoee',{x:["通用一部","全厂"],y:[prand.rand(40.0..48.0).round(2),prand.rand(36.0..48.0).round(2)],type:"column"})
 
 # 某生产车间与全厂平均的TEEP的对比
-send_event('jn_oeeteep_facoee',{x:["通用一部","全厂"],y:[prand.rand(39.7..48.8).round(2),prand.rand(32.0..45.0).round(2)],type:"column"})
+send_event('jn_oeeteep_facteep',{x:["通用一部","全厂"],y:[prand.rand(39.7..48.8).round(2),prand.rand(32.0..45.0).round(2)],type:"column"})
 
 # 各生产车间OEE的前三名排行
 send_event('jn_oeeteep_fst3oee',{x:["通用一部","通用二部","宝马一部"],y:[prand.rand(55.0..58.0).round(2),prand.rand(48.0..53.0).round(2),prand.rand(45.0..48.0).round(2)],type:"bar"})
@@ -79,4 +79,4 @@ send_event('jn_oeeteep_fst3teep',{x:["通用一部","通用二部","宝马一部
 send_event('jn_oeeteep_lst3oee',{x:["奔驰一部","奔驰二部","观致二部"],y:[prand.rand(33.0..35.0).round(2),prand.rand(36.0..39.0).round(2),prand.rand(36.0..39.0).round(2)],type:"bar"})
 
 # 各生产车间TEEP的后三名排行
-send_event('jn_oeeteep_lst3oee',{x:["奔驰一部","奔驰二部","观致二部"],y:[prand.rand(31.0..33.0).round(2),prand.rand(34.7..45.8).round(2),prand.rand(36.5..40.0).round(2)],type:"bar"})
+send_event('jn_oeeteep_lst3teep',{x:["奔驰一部","奔驰二部","观致二部"],y:[prand.rand(31.0..33.0).round(2),prand.rand(34.7..45.8).round(2),prand.rand(36.5..40.0).round(2)],type:"bar"})
