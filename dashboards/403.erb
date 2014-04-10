@@ -1,7 +1,35 @@
 <div class="gridster">
   <ul>
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="my_widget" data-view="Text"></div>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="welcome" data-view="Title" data-title="设备综合效率表" data-button="退出全屏"></div>
+    </li>
+    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
+      <div  data-id="jn_oeeteep_currentoee" data-view="Text" data-title="当前平均TEEP" ></div>
+    </li>
+    <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
+      <div  data-id="jn_oeeteep_currentteep" data-view="Text" data-title="当前产能" ></div>
+    </li>
+
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-class="small-chart" data-legend="true" data-id="jn_oeeteep_facoee" data-view="Highchart" data-title="通用一部与全厂平均的OEE" data-graphtype="column" data-columns="two"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-class="small-chart" data-legend="true"  data-id="jn_oeeteep_facteep" data-view="Highchart" data-title="通用一部与全厂平均的TEEP" data-graphtype="column" data-columns="two"></div>
+    </li>
+
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-class="small-chart" data-id="jn_oeeteep_fst3oee"data-view="Highchart" data-title="各生产车间OEE的前三名排行" data-graphtype="bar" data-columns="three" data-label=1></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-class="small-chart" data-id="jn_oeeteep_lst3oee"data-view="Highchart" data-title="各生产车间OEE的后三名排行" data-graphtype="bar" data-columns="three" data-label=2></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-class="small-chart" data-id="jn_oeeteep_fst3teep" data-view="Highchart" data-title="各生产车间TEEP的前三名排行" data-graphtype="bar" data-columns="three" data-label=3></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-class="small-chart" data-id="jn_oeeteep_lst3teep"data-view="Highchart" data-title="各生产车间TEEP的后三名排行" data-graphtype="bar" data-columns="three" data-label=4></div>
     </li>
   </ul>
 </div>
