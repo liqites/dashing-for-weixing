@@ -25,10 +25,10 @@ send_event('jn_sale_tws_buy',{date:date_7b,value:[{title:"上海",value:Generato
 send_event('jn_sale_allsub_buy',{value:[{name:"通用一部",val:prand.rand(10000..500000)},{name:"通用二部",val:prand.rand(10000..500000)},{name:"宝马一部",val:prand.rand(10000..500000)},{name:"宝马二部",val:prand.rand(10000..500000)},{name:"奔驰一部",val:prand.rand(10000..500000)},{name:"奔驰二部",val:prand.rand(10000..500000)},{name:"大众一部",val:prand.rand(10000..500000)},{name:"大众二部",val:prand.rand(10000..500000)},{name:"大众三部",val:prand.rand(10000..500000)}]})
 
 # 一段时间内总客户订单份数的排行汇总
-send_event('jn_sale_order_catenum',{x:["通用","奔驰","宝马","大众","观致"],y:[prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70)]})
+send_event('jn_sale_order_catenum',{x:["通用","奔驰","宝马","大众","观致"],y:[prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70),prand.rand(10..70)],type:"bar"})
 
 # 一段时间内总客户订单金额的排行汇总
-send_event('jn_sale_order_sumnum',{x:["通用","奔驰","宝马","大众","观致"],y:[prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000)]})
+send_event('jn_sale_order_sumnum',{x:["通用","奔驰","宝马","大众","观致"],y:[prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000),prand.rand(5000..500000)],type:"bar"})
 
 ############
 #生产监控表
