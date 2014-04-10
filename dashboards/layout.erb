@@ -30,4 +30,14 @@
       <a href="#saving-instructions" id="save-gridster">Save this layout</a>
     <% end %>
   </body>
+<script type="text/javascript">
+  $(document).ready(function(){
+      var interval=window.setInterval(function(){
+          if($('.gridster ul:first').data('gridster')){
+              $('.gridster ul:first').data('gridster').disable();
+              window.clearInterval(interval)
+          }
+      },500)
+  })
+</script>
 </html>

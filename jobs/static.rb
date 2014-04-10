@@ -37,12 +37,13 @@ send_event('metalclose_capicity', {date:date_30b, plan:metalclose_aprovedplan, f
 send_event('metalclose_plan',{date:date_7b15f,plan:(metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),finished:Generator.generate_new_array(22,7,metalclose_finished),unfinished:Generator.generate_array_minus((metalclose_plan_30b.last(7)<<metalclose_plan_30f.first(15)),Generator.generate_new_array(22,7,metalclose_finished))})
 
 # 前一个月的累计误期值
-send_event('metalclose_sum_unfinished',{value:Generator.generate_array_sum(metalclose_unfinished)})
+send_event('metalclose_sum_unfinished',{value:Generator.generate_array_sum(metalclose_unfinished).round(2)})
 
-# 前一个月的存量值+后15天的计划值
-send_event('metalclose_sum_planunfinished',{value:(Generator.generate_array_sum(metalclose_plan_30b)+Generator.generate_array_sum(metalclose_plan_30f.first(15)))})
+# 前一个月的存量值+后15天的计划值                     date_30b
+send_event('metalclose_sum_planunfinished',{value:(Generator.generate_array_sum(metalclose_plan_30b)+Generator.generate_array_sum(metalclose_plan_30f.first(15)).round(2))})
 
 # 前一个月的实际产量周日均与实际产量的对比
+send_event('metalclose_capicity_rate',{value:86});
 
 # 后30天的每日计划量线性图
 send_event('mentalclose_plan_30f',{date:date_30f,points:metalclose_plan_30f})
@@ -74,11 +75,11 @@ send_event('metalopen_capicity', {date:date_30b, plan:metalopen_aprovedplan, fin
 # 前7天与后15天的计划组成
 send_event('metalopen_plan',{date:date_7b15f,plan:(metalopen_plan_30b.last(7)<<metalopen_plan_30f.first(15)),finished:Generator.generate_new_array(22,7,metalopen_finished),unfinished:Generator.generate_array_minus((metalopen_plan_30b.last(7)<<metalopen_plan_30f.first(15)),Generator.generate_new_array(22,7,metalopen_finished))})
 # 前一个月的累计误期值
-send_event('metalopen_sum_unfinished',{value:Generator.generate_array_sum(metalopen_unfinished)})
+send_event('metalopen_sum_unfinished',{value:Generator.generate_array_sum(metalopen_unfinished).round(2)})
 # 前一个月的存量值+后15天的计划值
 send_event('metalopen_sum_planunfinished',{value:(Generator.generate_array_sum(metalopen_plan_30b)+Generator.generate_array_sum(metalopen_plan_30f.first(15)))})
 # 前一个月的实际产量周日均与实际产量的对比
-
+send_event('metalopen_capicity_rate',{value:98})
 
 # 后30天的每日计划量线性图
 send_event('mentalopen_plan_30f',{date:date_30f,points:metalopen_plan_30f})
@@ -98,11 +99,13 @@ metalproofing_unfinished =Generator.generate_array_minus(metalproofing_plan_30b,
 # 前一个月缺数、完工数、核定产能对比
 send_event('mentalproofing_capacity',{date:date_30b,finished:metalproofing_finished,unfinished:metalproofing_unfinished})
 # （一个月）每日完工数占计划数比率
-send_event('mentalproofing_finishrate',{a:Generator.generate_array_sum(metalproofing_finished),b:Generator.generate_array_sum(metalproofing_plan_30b)})
+send_event('mentalproofing_finishrate',{value:(Generator.generate_array_sum(metalproofing_finished)/Generator.generate_array_sum(metalproofing_plan_30b)*100).round(0)})
+#send_event('mentalproofing_finishrate',{a:Generator.generate_array_sum(metalproofing_finished),b:Generator.generate_array_sum(metalproofing_plan_30b)})
 # 前一个月的累计误期值
 send_event('mentalproofing_unfinished',{value:Generator.generate_array_sum(metalproofing_unfinished)})
 # 总累计误期占总计划量的比值
-send_event('mentalprooging_unfinishedrate',{a:Generator.generate_array_sum(metalproofing_unfinished),b:Generator.generate_array_sum(metalproofing_plan_30b)})
+send_event('mentalprooging_unfinishedrate',{value:(Generator.generate_array_sum(metalproofing_unfinished)/Generator.generate_array_sum(metalproofing_plan_30b)*100).round(0)})
+#send_event('mentalprooging_unfinishedrate',{a:Generator.generate_array_sum(metalproofing_unfinished),b:Generator.generate_array_sum(metalproofing_plan_30b)})
 
 ###########
 # 钢塑订单表
@@ -141,11 +144,14 @@ send_event('order_sameperiod',{date:date_30b,last:order_lastyear_30b,current:ord
 #############
 #销售对比
 #############
+#@@七天的时间
+date_7b = Generator.generate_date(7)
 # 一段时间华北采购与收费金额对比
 send_event('sale_hubei',{a:prand.rand(360000...400000),b:prand.rand(360000...400000)})
 
 # 一段时间内，台州分公司，上海分公司，温州分公司采购金额对比
-send_event('sale_tws_buy',{a:prand.rand(10000..500000),b:prand.rand(20000..90000),c:prand.rand(200000..300000)})
+#send_event('sale_tws_buy',{a:prand.rand(10000..500000),b:prand.rand(20000..90000),c:prand.rand(200000..300000)})
+send_event('sale_tws_buy',{date:date_7b,a:Generator.generate_data(7,20000,8000),b:Generator.generate_data(7,15000,8000),c:Generator.generate_data(7,5000,4000)})
 
 # 一段时间内各分厂的采购金额占比
 send_event('sale_allsub_but',{a:prand.rand(10000..500000),b:prand.rand(10000..500000),c:prand.rand(10000..500000),d:prand.rand(10000..500000),e:prand.rand(10000..500000),f:prand.rand(10000..500000),g:prand.rand(10000..500000),h:prand.rand(10000..500000),i:prand.rand(10000..500000)})
@@ -160,28 +166,28 @@ send_event('sale_order_sumnum',{a:prand.rand(5000..500000),b:prand.rand(5000..50
 #OEE&TEEP
 #############
 # 当前平均OEE
-send_event('oeeteep_currentoee',{value:prand.rand(40.0..50.0)})
+send_event('oeeteep_currentoee',{value:prand.rand(40.0..50.0).round(2)})
 
 # 当前平均TEEP
-send_event('oeeteep_currentteep',{value:prand.rand(40.0..42.0)})
+send_event('oeeteep_currentteep',{value:prand.rand(40.0..42.0).round(2)})
 
 # 某生产车间与全厂平均的OEE的对比
-send_event('oeeteep_facoee',{a:prand.rand(40.0..48.0),b:prand.rand(36.0..48.0)})
+send_event('oeeteep_facoee',{a:prand.rand(40.0..48.0).round(2),b:prand.rand(36.0..48.0).round(2)})
 
 # 某生产车间与全厂平均的TEEP的对比
-send_event('oeeteep_facteep',{a:prand.rand(39.7..48.8),b:prand.rand(32.0..45.0)})
+send_event('oeeteep_facteep',{a:prand.rand(39.7..48.8).round(2),b:prand.rand(32.0..45.0).round(2)})
 
 # 各生产车间OEE的前三名排行
-send_event('oeeteep_fst3oee',{a:prand.rand(55.0..58.0),b:prand.rand(48.0..53.0),c:prand.rand(45.0..48.0)})
+send_event('oeeteep_fst3oee',{a:prand.rand(55.0..58.0).round(2),b:prand.rand(48.0..53.0).round(2),c:prand.rand(45.0..48.0).round(2)})
 
 # 各生产车间TEEP的前三名排行
-send_event('oeeteep_fst3teep',{a:prand.rand(53.0..55.0),b:prand.rand(46.0..48.0),c:prand.rand(43.0..46.0)})
+send_event('oeeteep_fst3teep',{a:prand.rand(53.0..55.0).round(2),b:prand.rand(46.0..48.0).round(2),c:prand.rand(43.0..46.0).round(2)})
 
 # 各生产车间OEE的后三名排行
-send_event('oeeteep_lst3oee',{a:prand.rand(33.0..35.0),b:prand.rand(36.0..39.0),c:prand.rand(36.0..39.0)})
+send_event('oeeteep_lst3oee',{a:prand.rand(33.0..35.0).round(2),b:prand.rand(36.0..39.0).round(2),c:prand.rand(36.0..39.0).round(2)})
 
 # 各生产车间TEEP的后三名排行
-send_event('oeeteep_lst3teep',{a:prand.rand(31.0..33.0),b:prand.rand(34.7..45.8),c:prand.rand(36.5..40.0)})
+send_event('oeeteep_lst3teep',{a:prand.rand(31.0..33.0).round(2),b:prand.rand(34.7..45.8.round(2)),c:prand.rand(36.5..40.0).round(2)})
 
 # Daily
 ################
@@ -199,7 +205,9 @@ order_daily_sum = 0
 order_buy = 0
 #@@ 当前收费金额
 order_fee = 0
-SCHEDULER.every '3s', :first_in => 0 do |job|
+
+SCHEDULER.every '2s', :first_in => 0 do |job|
+
   puts "push data"
   mentalclose_trueoutput = Generator.generate_single_value(mentalclose_trueoutput,10,2)
   mentalopen_trueoutput = Generator.generate_single_value(mentalopen_trueoutput,8,2)

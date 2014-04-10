@@ -19,7 +19,7 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 
   .title {
     color: $title-color;
-    margin-top:-50px;
+    margin-top:-30px;
   }
 
   .timeRange{
@@ -53,6 +53,16 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 
   li {
     margin-bottom: 5px;
+    &:nth-of-type(2){
+      .value{
+        color: #4cbf1f;
+      }
+    }
+    &:nth-of-type(3){
+      .value{
+        color: indianred;
+      }
+    }
   }
 
   .list-nostyle {
@@ -61,13 +71,16 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 
   .label {
     color: $label-color;
+    font-size:17px;
   }
 
   .value {
-    float: right;
-    margin-left: 12px;
+    display:block;
+    margin-left: 0px;
     font-weight: 600;
+    font-size:17px;
     color: $value-color;
+
   }
 
   .updated-at {

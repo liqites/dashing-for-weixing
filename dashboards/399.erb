@@ -1,7 +1,19 @@
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="my_widget" data-view="Text"></div>
+      <div data-id="welcome" data-view="Title" data-title="销售分析表" data-button="退出全屏"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="3" data-sizey="1">
+      <div data-class="small-chart" data-legend="true" data-id="sale_tws_buy"data-view="Highchart" data-title="近期采购金额对比" data-graphtype="column" data-columns="three"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="2">
+      <div data-legend="true" data-id="sale_allsub_but"data-view="Highchart" data-title="各分厂采购金额占比" data-graphtype="pie"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-class="small-chart"  data-id="sale_order_catenum"data-view="Highchart" data-title="客户订单份数排行" data-graphtype="bar" data-columns="five"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-class="small-chart"  data-id="sale_order_sumnum"data-view="Highchart" data-title="客户订单总额排行" data-graphtype="bar" data-columns="five"></div>
     </li>
   </ul>
 </div>
