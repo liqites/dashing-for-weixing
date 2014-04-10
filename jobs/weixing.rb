@@ -30,7 +30,8 @@ metalclose_plan_30f = Generator.generate_data(15,50.0,20.0)
 #---------------------------
 
 # 前一个月缺数、完工数、核定产能对比
-send_event('metalclose_capicity', {date:date_30b, plan:metalclose_aprovedplan, finished:metalclose_finished, unfinished:metalclose_unfinished })
+#send_event('metalclose_capicity', {date:date_30b, plan:metalclose_aprovedplan, finished:metalclose_finished, unfinished:metalclose_unfinished })
+send_event('metalclose_capicity',{x:date_30b,value:[{title:"plan",value:metalclose_aprovedplan},{title:"finished",value:metalclose_finished},{title:"unfinished",value:metalclose_unfinished}]})
 
 # 今日实际产量与前一个月（31个点）实际产量对比
 # send_event('metalclose_output',{date:date_30b,output:metalclose_trueoutput})
@@ -71,7 +72,8 @@ metalopen_plan_30f = Generator.generate_data(15,40.0,10.0)
 #---------------------------
 
 # 前一个月缺数、完工数、核定产能对比
-send_event('metalopen_capicity', {date:date_30b, plan:metalopen_aprovedplan, finished:metalopen_finished, unfinished:metalopen_unfinished })
+# send_event('metalopen_capicity', {date:date_30b, plan:metalopen_aprovedplan, finished:metalopen_finished, unfinished:metalopen_unfinished })
+send_event('metalopen_capicity',{x:date_30b,value:[{title:"plan",value:metalopen_aprovedplan},{title:"finished",value:metalopen_finished},{title:"unfinished",value:metalopen_unfinished}]})
 # 今日实际产量与前一个月（31个点）实际产量对比
 # send_event('metalopen_output',{date:date_30b,output:metalopen_trueoutput})
 # 前7天与后15天的计划组成
@@ -101,8 +103,8 @@ metalproofing_trueoutput = Generator.generate_data(20,70.0,20.0)
 metalproofing_unfinished =Generator.generate_array_minus(metalproofing_plan_30b,metalproofing_finished)
 
 # 前一个月缺数、完工数、核定产能对比
-send_event('mentalproofing_capacity',{date:date_30b,finished:metalproofing_finished,unfinished:metalproofing_unfinished})
-
+#send_event('mentalproofing_capacity',{date:date_30b,finished:metalproofing_finished,unfinished:metalproofing_unfinished})
+send_event('mentalproofing_capacity',{x:date_30b,value:[{title:"finished",value:metalproofing_finished},{title:"unfinished",value:metalproofing_unfinished}]})
 # （一个月）每日完工数占计划数比率
 send_event('mentalproofing_finishrate',{value:(Generator.generate_array_sum(metalproofing_finished)/Generator.generate_array_sum(metalproofing_plan_30b)*100).round(0)})
 #send_event('mentalproofing_finishrate',{a:Generator.generate_array_sum(metalproofing_finished),b:Generator.generate_array_sum(metalproofing_plan_30b)})
@@ -143,7 +145,7 @@ send_event('order_cusordercate',{x:date_30b,y:order_catenum,type:"column"})
 
 # 客户A的订单类型的各个数量
 # send_event('order_cusordernum',{a:order_sumnumA,b:order_sumnumB,c:order_sumnumC})
-send_event('order_cusordernum',{x:[order_sumnumA,order_sumnumB,order_sumnumC],y:["羽绒服","运动服","外套"],type:"bar"})
+send_event('order_cusordernum',{x:["羽绒服","运动服","外套"],y:[order_sumnumA,order_sumnumB,order_sumnumC],type:"bar"})
 
 # 一段时间按订单类型占比分析
 
@@ -165,7 +167,7 @@ send_event('sale_tws_buy',{date:date_7b,value:[{title:"台州",value:Generator.g
 
 # 一段时间内各分厂的采购金额占比
 # send_event('sale_allsub_but',{a:prand.rand(10000..500000),b:prand.rand(10000..500000),c:prand.rand(10000..500000),d:prand.rand(10000..500000),e:prand.rand(10000..500000),f:prand.rand(10000..500000),g:prand.rand(10000..500000),h:prand.rand(10000..500000),i:prand.rand(10000..500000)})
-send_event('sale_allsub_but',{value:[{name:"台州",val:prand.rand(10000..500000)},{name:"上海",val:prand.rand(10000..500000)},{name:"温州",val:prand.rand(10000..500000)},{name:"大洋外贸",val:prand.rand(10000..500000)},{name:"成都",val:prand.rand(10000..500000)},{name:"广东",val:prand.rand(10000..500000)},{name:"石家庄",val:prand.rand(10000..500000)},{name:"厦门",val:prand.rand(10000..500000)},{name:"",val:prand.rand(10000..500000)}]})
+send_event('sale_allsub_buy',{value:[{name:"台州",val:prand.rand(10000..500000)},{name:"上海",val:prand.rand(10000..500000)},{name:"温州",val:prand.rand(10000..500000)},{name:"大洋外贸",val:prand.rand(10000..500000)},{name:"成都",val:prand.rand(10000..500000)},{name:"广东",val:prand.rand(10000..500000)},{name:"青岛",val:prand.rand(10000..500000)},{name:"石家庄",val:prand.rand(10000..500000)},{name:"厦门",val:prand.rand(10000..500000)}]})
 
 # 一段时间内总客户订单份数的排行汇总
 # send_event('sale_order_catenum',{a:prand.rand(10..70),b:prand.rand(10..70),c:prand.rand(10..70),d:prand.rand(10..70),e:prand.rand(10..70)})
