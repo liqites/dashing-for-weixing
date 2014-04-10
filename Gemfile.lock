@@ -37,7 +37,7 @@ GEM
     multi_json (1.9.2)
     multipart-post (2.0.0)
     naught (1.0.0)
-    rack (1.5.2)
+    rack (1.4.2)
     rack-protection (1.5.2)
       rack
     rack-test (0.6.2)
@@ -94,5 +94,6 @@ PLATFORMS
 
 DEPENDENCIES
   dashing
+  rack (= 1.4.2)
   twitter (>= 5.0.0)
   unicorn
