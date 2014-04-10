@@ -1,0 +1,17 @@
+$title-color:rgba(255, 255, 255, 0.7);
+
+.widget-pie {
+  padding-bottom:0px !important;
+  .title{
+    color:$title-color;
+    position:absolute;
+    left:0px;
+    right:0px;
+    top:5px;
+    text-align:center;
+
+  }
+  .small-chart{
+    height:190px !important;
+  }
+}
