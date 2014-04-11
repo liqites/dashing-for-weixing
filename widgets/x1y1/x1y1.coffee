@@ -1,5 +1,24 @@
 class Dashing.X1y1 extends Dashing.Widget
   @accessor 'current', Dashing.AnimatedValue
+  @accessor 'series',->
+    if @get("compare")
+      return [{
+                data:[{
+                  y:@get("y")[0]
+                  color:"#fd7171"
+                }
+                {
+                  y:@get("y")[1]
+                  color:"#000"
+                }
+                ]
+
+              }]
+    else
+      return [{
+                data:@get("y")
+                color:"#fff"
+             }]
   ready: ->
     # This is fired when the widget is done being rendered
     @chart = new Highcharts.Chart
@@ -38,10 +57,7 @@ class Dashing.X1y1 extends Dashing.Widget
         labels:
           style:
             color:'rgba(255,255,255,0.5)'
-      series: [{
-        data:@get("y")
-        color:"#fff"
-      }]
+      series:@get("series")
 
   onData: (data) ->
     # Handle incoming data
